@@ -7,11 +7,12 @@
 
 ## Properties
 
-| Property | Attribute | Description     | Type     | Default     |
-| -------- | --------- | --------------- | -------- | ----------- |
-| `first`  | `first`   | The first name  | `string` | `undefined` |
-| `last`   | `last`    | The last name   | `string` | `undefined` |
-| `middle` | `middle`  | The middle name | `string` | `undefined` |
+| Property   | Attribute  | Description                                                      | Type           | Default     |
+| ---------- | ---------- | ---------------------------------------------------------------- | -------------- | ----------- |
+| `disabled` | `disabled` | If true, the button is displayed as disabled                     | `boolean`      | `false`     |
+| `label`    | `label`    | The text which is shown as label                                 | `string`       | `undefined` |
+| `name`     | `name`     | Is needed to reference the form data after the form is submitted | `string`       | `undefined` |
+| `options`  | --         | Define the available options in the drop-down list               | `CompOption[]` | `[]`        |
 
 
 ----------------------------------------------

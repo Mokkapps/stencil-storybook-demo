@@ -1,5 +1,9 @@
-import { Component, Prop, h } from '@stencil/core';
-import { format } from '../../utils/utils';
+import { Component, h, Prop } from '@stencil/core';
+
+export interface CompOption {
+  value: string;
+  displayText: string;
+}
 
 @Component({
   tag: 'my-component',
@@ -8,25 +12,36 @@ import { format } from '../../utils/utils';
 })
 export class MyComponent {
   /**
-   * The first name
+   * The text which is shown as label
    */
-  @Prop() first: string;
+  @Prop() label: string;
 
   /**
-   * The middle name
+   * Is needed to reference the form data after the form is submitted
    */
-  @Prop() middle: string;
+  @Prop({ reflect: true }) name: string;
 
   /**
-   * The last name
+   * If true, the button is displayed as disabled
    */
-  @Prop() last: string;
+  @Prop({ reflect: true }) disabled = false;
 
-  private getText(): string {
-    return format(this.first, this.middle, this.last);
-  }
+  /**
+   * Define the available options in the drop-down list
+   */
+  @Prop() options: CompOption[] = [];
 
   render() {
-    return <div>Hello, World! I'm {this.getText()}</div>;
+    return (
+      <div>
+        <label htmlFor={this.name}>{this.label}</label>
+
+        <select name={this.name} id={this.name} disabled={this.disabled}>
+          {this.options.map(o => (
+            <option value={o.value}>{o.displayText}</option>
+          ))}
+        </select>
+      </div>
+    );
   }
 }

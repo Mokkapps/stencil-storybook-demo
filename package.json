@@ -15,14 +15,32 @@
     "loader/"
   ],
   "scripts": {
-    "build": "stencil build --docs",
-    "start": "stencil build --dev --watch --serve",
-    "test": "stencil test --spec --e2e",
-    "test.watch": "stencil test --spec --e2e --watchAll",
-    "generate": "stencil generate"
+    "build-stencil": "stencil build --docs",
+    "build-stencil:watch": "stencil build --docs-readme --watch --serve",
+    "start-stencil": "stencil build --dev --watch --serve",
+    "test-stencil": "stencil test --spec --e2e",
+    "test-stencil.watch": "stencil test --spec --e2e --watchAll",
+    "generate": "stencil generate",
+    "start-storybook": "start-storybook -p 6006 -s dist --no-manager-cache",
+    "prebuild-storybook": "npm run build-stencil",
+    "build-storybook": "build-storybook -o ./distStorybook",
+    "deploy-storybook": "storybook-to-ghpages --existing-output-dir ./distStorybook --source-branch main",
+    "clean": "rimraf dist"
   },
   "dependencies": {
     "@stencil/core": "^2.0.1"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.13.10",
+    "@storybook/addon-actions": "^6.1.21",
+    "@storybook/addon-essentials": "^6.1.21",
+    "@storybook/addon-links": "^6.1.21",
+    "@storybook/html": "^6.1.21",
+    "@storybook/react": "^6.1.21",
+    "@storybook/storybook-deployer": "^2.8.7",
+    "babel-loader": "^8.2.2",
+    "prettier": "^2.0.5",
+    "rimraf": "^3.0.2"
+  }
 }
