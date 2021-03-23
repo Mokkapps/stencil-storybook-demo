@@ -9,6 +9,22 @@
     <script nomodule src="/build/ui-kit.js"></script>
   </head>
   <body>
-    <my-component first="Stencil" last="'Don't call me a framework' JS"></my-component>
+    <my-component id="my-comp" label="Label" name="MyComp" disabled="false"></my-component>
   </body>
+  <script>
+    document.getElementById('my-comp').options = [
+      {
+        value: 'Item 1',
+        displayText: 'Item 1',
+      },
+      {
+        value: 'Item 2',
+        displayText: 'Item 2',
+      },
+      {
+        value: 'Item 3',
+        displayText: 'Item 3',
+      },
+    ];
+  </script>
 </html>

@@ -24,8 +24,9 @@
     "start-storybook": "start-storybook -p 6006 -s dist --no-manager-cache",
     "prebuild-storybook": "npm run build-stencil",
     "build-storybook": "build-storybook -o ./distStorybook",
-    "deploy-storybook": "storybook-to-ghpages --existing-output-dir ./distStorybook",
-    "clean": "rimraf dist"
+    "predeploy-storybook": "npm run build-storybook",
+    "deploy-storybook": "storybook-to-aws-s3 --existing-output-dir ./distStorybook --bucket-path <AWS_BUCKET_PATH>",
+    "clean": "rimraf dist && rimraf distStorybook"
   },
   "dependencies": {
     "@stencil/core": "^2.0.1"
